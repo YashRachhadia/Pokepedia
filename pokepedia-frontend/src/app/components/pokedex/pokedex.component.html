@@ -1,13 +1,13 @@
 <h3>Search Pokemon's by Name or ID</h3>
 <div class="search-container">
   <div class="search-bar">
-    <button class="search-button"><i class="fas fa-search"></i></button>
+    <button class="search-button">Search<i class="fas fa-search"></i></button>
     <input
       type="text"
       name="search"
-      [(ngModel)]="searchQuery"
       id="search"
-      placeholder="Search..."
+      placeholder="Enter ID or name to search..."
+      (keyup)="searchTerm.next($event.target.value)"
     />
   </div>
 </div>
@@ -45,37 +45,56 @@
   </div>
 </div>
 <h1>Pokedex</h1>
+<div class="spinner" *ngIf="!dataLoaded">
+  <div class="spinner-ball">
+    <div class="line"></div>
+  </div>
+  <h3>Loading...</h3>
+</div>
+<div class="pokemon-gallery" *ngIf="dataLoaded && searchedPokemons.length">
+  <div
+    class="detail-card"
+    *ngFor="
+      let item of searchedPokemons
+        | abilitiesFilter: selectedAbilities
+        | typesFilter: selectedType;
+      trackByFn
+    "
+  >
+    <app-detail-card
+      [image]="item.details?.sprites"
+      [pokename]="item.name"
+      [types]="item.details?.types"
+      [stats]="item.details?.stats"
+      [abilities]="item.details?.abilities"
+      [id]="item.pokemonID"
+    ></app-detail-card>
+  </div>
+</div>
 <div
   class="pokemon-gallery"
   infiniteScroll
   [infiniteScrollDistance]="1"
   [infiniteScrollThrottle]="150"
   (scrolled)="onScroll()"
+  *ngIf="dataLoaded && !searchedPokemons.length"
 >
-  <div class="spinner" *ngIf="!dataLoaded">
-    <div class="spinner-ball">
-      <div class="line"></div>
-    </div>
-    <h3>Loading...</h3>
+  <div
+    class="detail-card"
+    *ngFor="
+      let item of pokemons
+        | abilitiesFilter: selectedAbilities
+        | typesFilter: selectedType;
+      trackByFn
+    "
+  >
+    <app-detail-card
+      [image]="item.details?.sprites"
+      [pokename]="item.name"
+      [types]="item.details?.types"
+      [stats]="item.details?.stats"
+      [abilities]="item.details?.abilities"
+      [id]="item.pokemonID"
+    ></app-detail-card>
   </div>
-  <ng-container *ngIf="dataLoaded">
-    <div
-      class="detail-card"
-      *ngFor="
-        let item of pokemons
-          | abilitiesFilter: selectedAbilities
-          | typesFilter: selectedType;
-        trackByFn
-      "
-    >
-      <app-detail-card
-        [image]="item.details?.sprites"
-        [pokename]="item.name"
-        [types]="item.details?.types"
-        [stats]="item.details?.stats"
-        [abilities]="item.details?.abilities"
-        [id]="item.pokemonID"
-      ></app-detail-card>
-    </div>
-  </ng-container>
 </div>

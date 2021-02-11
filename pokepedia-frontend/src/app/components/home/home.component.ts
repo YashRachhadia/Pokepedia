@@ -53,22 +53,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   private subject: Subject<void> = new Subject<void>();
 
   ngOnInit(): void {
-    // this.utilityService
-    //   .getPokemonData(0, 4)
-    //   .pipe(
-    //     switchMap((res) => this.getDetails(res)),
-    //     takeUntil(this.subject)
-    //   )
-    //   .subscribe((res) => {
-    //     console.log(res);
-    //     for (let i = 0; i < res.length; i++) {
-    //       this.pokemons.results[i].details = res[i];
-    //       this.pokeCard.push(this.pokemons.results[i]);
-    //     }
-    //     this.dataLoaded = true;
-    //     console.log(this.pokeCard);
-    //   });
-
     this.utilityService
       .getPokemonData(0, 4)
       .pipe(takeUntil(this.subject))

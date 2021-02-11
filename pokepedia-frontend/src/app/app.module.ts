@@ -18,10 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-import { AbilitiesFilterPipe } from './pipes/abilities-filter.pipe';
-import { SearchPipe } from './pipes/search.pipe';
-import { TypesFilterPipe } from './pipes/types-filter.pipe';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { AbilitiesFilterPipe } from './pipes/abilities-filter.pipe';
+import { TypesFilterPipe } from './pipes/types-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +36,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     PokeEventComponent,
     AboutComponent,
     AbilitiesFilterPipe,
-    SearchPipe,
     TypesFilterPipe,
   ],
   imports: [

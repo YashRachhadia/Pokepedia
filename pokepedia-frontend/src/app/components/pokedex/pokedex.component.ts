@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { PokeData } from 'src/app/interfaces/PokeData';
@@ -17,11 +16,12 @@ export class PokedexComponent implements OnInit, OnDestroy {
   dataLoaded: boolean = false;
   abilities: string[] = [];
   types: string[] = [];
-  searchQuery: string;
   selectedAbilities: string[];
   selectedType: string;
   fetch: boolean = true;
   private subject: Subject<void> = new Subject<void>();
+  searchTerm: Subject<string> = new Subject<string>();
+  searchedPokemons: PokeData[] = [];
 
   ngOnInit(): void {
     this.utilityService
@@ -34,6 +34,10 @@ export class PokedexComponent implements OnInit, OnDestroy {
         this.setPokemonAbilities(res);
         this.setPokemonTypes(res);
       });
+
+    this.utilityService.search(this.searchTerm).subscribe((res) => {
+      this.searchedPokemons = res;
+    });
   }
 
   setPokemonAbilities(pokemons: PokeData[]): void {
@@ -73,7 +77,6 @@ export class PokedexComponent implements OnInit, OnDestroy {
         .subscribe((res) => {
           if (this.pokemons.length < 200) {
             this.pokemons.push(...res);
-            console.log('Pokemons in scrolled ', this.pokemons);
             this.setPokemonAbilities(res);
             this.setPokemonTypes(res);
           } else {
