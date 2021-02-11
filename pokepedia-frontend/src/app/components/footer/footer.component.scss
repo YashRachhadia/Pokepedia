@@ -1,0 +1,104 @@
+$color: #737373;
+
+.footer-container {
+  background-color: #1d1e22;
+  width: 100%;
+  min-height: 200px;
+  color: $color;
+}
+
+.details-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-left {
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.footer-right {
+  margin-top: 20px;
+  margin-right: 20px;
+  text-align: center;
+  ul {
+    display: flex;
+    flex-direction: column;
+    li {
+      list-style-type: none;
+      padding: 5px;
+      a {
+        text-decoration: none;
+        color: $color;
+        text-align: center;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+h3 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: white;
+}
+
+hr {
+  border-top-color: #bbb;
+  border-bottom-color: transparent;
+  border-color: #bbb transparent transparent;
+  opacity: 0.5;
+  width: 90%;
+  margin: 20px auto;
+}
+
+.sm-links {
+  display: flex;
+  a {
+    text-decoration: none;
+    .fab {
+      font-size: 2rem;
+      color: $color;
+      padding: 5px;
+    }
+    .fa-facebook:hover {
+      color: rgba(55, 55, 219, 0.712);
+    }
+    .fa-instagram:hover {
+      color: rgba(179, 44, 44, 0.884);
+    }
+    .fa-linkedin:hover {
+      color: rgba(56, 56, 255, 0.808);
+    }
+    .fa-github:hover {
+      color: black;
+    }
+  }
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  .copyright-info {
+    margin-bottom: 15px;
+  }
+  .sm-links {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 688px) {
+  .details-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}

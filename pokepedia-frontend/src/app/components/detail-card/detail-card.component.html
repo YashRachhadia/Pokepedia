@@ -1,0 +1,22 @@
+<div class="pokemon-card-container">
+  <div class="pokemon-card">
+    <div class="background">
+      <div class="image">
+        <img src="{{ image }}" alt="" />
+      </div>
+    </div>
+    <div class="content">
+      <h1 class="pokemon-name">#{{ id }} {{ pokename | titlecase }}</h1>
+      <div class="type-container">
+        <span class="pokemon-type" *ngFor="let item of types">{{
+          item.type.name
+        }}</span>
+      </div>
+      <div class="pokemon-stats">
+        <p *ngFor="let item of stats">
+          {{ item.stat.name | titlecase }} : {{ item.base_stat }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

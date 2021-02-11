@@ -1,0 +1,81 @@
+<h3>Search Pokemon's by Name or ID</h3>
+<div class="search-container">
+  <div class="search-bar">
+    <button class="search-button"><i class="fas fa-search"></i></button>
+    <input
+      type="text"
+      name="search"
+      [(ngModel)]="searchQuery"
+      id="search"
+      placeholder="Search..."
+    />
+  </div>
+</div>
+<div class="filter-container">
+  <div class="type-filter-container">
+    <mat-label class="heading">Filter by Pokemon's Type :</mat-label>
+    <mat-form-field class="form-field">
+      <mat-select [(ngModel)]="selectedType">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{ type | titlecase }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="abilities-filter-container">
+    <mat-label class="heading">Filter by Pokemon's Abilities :</mat-label>
+    <mat-form-field class="form-field">
+      <mat-select [(ngModel)]="selectedAbilities" multiple>
+        <mat-select-trigger>
+          {{ selectedAbilities ? selectedAbilities[0] : "" }}
+          <span
+            *ngIf="selectedAbilities?.length > 1"
+            class="additional-selection"
+          >
+            (+{{ selectedAbilities.length - 1 }}
+            {{ selectedAbilities?.length === 2 ? "other" : "others" }})
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let ability of abilities" [value]="ability">
+          {{ ability | titlecase }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<h1>Pokedex</h1>
+<div
+  class="pokemon-gallery"
+  infiniteScroll
+  [infiniteScrollDistance]="1"
+  [infiniteScrollThrottle]="150"
+  (scrolled)="onScroll()"
+>
+  <div class="spinner" *ngIf="!dataLoaded">
+    <div class="spinner-ball">
+      <div class="line"></div>
+    </div>
+    <h3>Loading...</h3>
+  </div>
+  <ng-container *ngIf="dataLoaded">
+    <div
+      class="detail-card"
+      *ngFor="
+        let item of pokemons
+          | abilitiesFilter: selectedAbilities
+          | typesFilter: selectedType;
+        trackByFn
+      "
+    >
+      <app-detail-card
+        [image]="item.details?.sprites"
+        [pokename]="item.name"
+        [types]="item.details?.types"
+        [stats]="item.details?.stats"
+        [abilities]="item.details?.abilities"
+        [id]="item.pokemonID"
+      ></app-detail-card>
+    </div>
+  </ng-container>
+</div>

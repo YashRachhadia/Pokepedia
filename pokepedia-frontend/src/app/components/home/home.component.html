@@ -1,0 +1,57 @@
+<app-carousal></app-carousal>
+<div class="cards-container">
+  <div class="poke-cards-container">
+    <div class="spinner" *ngIf="!dataLoaded">
+      <div class="spinner-ball">
+        <div class="line"></div>
+      </div>
+      <h3>Loading Pokemon Cards...</h3>
+    </div>
+    <p class="title">Pokemon's</p>
+    <p class="view-btn">
+      View All
+      <span routerLink="/pokedex"
+        ><i class="fas fa-arrow-circle-right"></i
+      ></span>
+    </p>
+    <div class="poke-cards" *ngIf="dataLoaded">
+      <app-card
+        *ngFor="let item of pokemons; trackBy: trackByFn"
+        [image]="item.details?.sprites"
+        [pokename]="item.name"
+      ></app-card>
+    </div>
+  </div>
+  <div class="games-cards-container">
+    <p class="title">Video Games & Apps</p>
+    <p class="view-btn">
+      View All
+      <span routerLink="/games-and-apps"
+        ><i class="fas fa-arrow-circle-right"></i
+      ></span>
+    </p>
+    <div class="game-cards">
+      <app-card
+        *ngFor="let item of games"
+        [image]="item.image"
+        [pokename]="item.name"
+      ></app-card>
+    </div>
+  </div>
+  <div class="events-cards-container">
+    <p class="title">Poke Events</p>
+    <p class="view-btn">
+      View All
+      <span routerLink="/poke-events"
+        ><i class="fas fa-arrow-circle-right"></i
+      ></span>
+    </p>
+    <div class="event-cards">
+      <app-card
+        *ngFor="let item of events"
+        [image]="item.image"
+        [pokename]="item.name"
+      ></app-card>
+    </div>
+  </div>
+</div>
