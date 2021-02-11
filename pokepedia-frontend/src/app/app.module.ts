@@ -18,7 +18,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AbilitiesFilterPipe } from './pipes/abilities-filter.pipe';
 import { TypesFilterPipe } from './pipes/types-filter.pipe';
 
@@ -45,7 +44,6 @@ import { TypesFilterPipe } from './pipes/types-filter.pipe';
     BrowserAnimationsModule,
     MatSelectModule,
     FormsModule,
-    InfiniteScrollModule,
   ],
   providers: [UtilityService],
   bootstrap: [AppComponent],

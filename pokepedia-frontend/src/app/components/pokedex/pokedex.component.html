@@ -1,7 +1,7 @@
 <h3>Search Pokemon's by Name or ID</h3>
 <div class="search-container">
   <div class="search-bar">
-    <button class="search-button">Search<i class="fas fa-search"></i></button>
+    <i class="fas fa-search"></i>
     <input
       type="text"
       name="search"
@@ -71,14 +71,7 @@
     ></app-detail-card>
   </div>
 </div>
-<div
-  class="pokemon-gallery"
-  infiniteScroll
-  [infiniteScrollDistance]="1"
-  [infiniteScrollThrottle]="150"
-  (scrolled)="onScroll()"
-  *ngIf="dataLoaded && !searchedPokemons.length"
->
+<div class="pokemon-gallery" *ngIf="dataLoaded && !searchedPokemons.length">
   <div
     class="detail-card"
     *ngFor="
@@ -98,3 +91,12 @@
     ></app-detail-card>
   </div>
 </div>
+<p
+  *ngIf="
+    fetch && !searchedPokemons.length && !selectedAbilities && !selectedType
+  "
+  class="view-more"
+  (click)="fetchMorePokemons()"
+>
+  + View More
+</p>

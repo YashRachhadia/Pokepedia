@@ -68,8 +68,7 @@ export class PokedexComponent implements OnInit, OnDestroy {
     }
   }
 
-  onScroll() {
-    console.log('scrolled');
+  fetchMorePokemons() {
     if (fetch) {
       this.utilityService
         .getPokemonData(this.pokemons.length, 20)

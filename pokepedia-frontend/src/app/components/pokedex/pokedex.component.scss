@@ -61,24 +61,14 @@ h1 {
   transform: translate(-50%, -50%);
 }
 
-.search-button {
+.fas {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 30px;
+  right: 28px;
   z-index: 1;
-  font-size: 1.25rem;
-  padding: 8px;
-  border: 0;
-  border-radius: 0px 50px 50px 0px;
+  font-size: 1.3rem;
   color: #323435;
   opacity: 0.4;
-  outline: none;
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.7);
-  }
-  &:active {
-    background-color: rgba(95, 108, 148, 0.4);
-  }
 }
 
 input[type="text"] {
@@ -181,4 +171,16 @@ mat-label.heading {
 .additional-selection {
   opacity: 0.75;
   font-size: 0.75em;
+}
+
+.view-more {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  cursor: pointer;
+  float: right;
+  margin: 60px;
+  &:hover {
+    color: rgba(78, 161, 199, 0.795);
+  }
 }
