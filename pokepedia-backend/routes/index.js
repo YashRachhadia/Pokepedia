@@ -17,11 +17,14 @@ router.get("/pokemons", async (req, res) => {
     });
 });
 
-router.get("/pokemon/:name", async (req, res) => {
+router.get("/pokemons/:name", async (req, res) => {
   const search = req.params.name;
-  const data = await PokemonSchema.find({ name: search }, (error, result) => {
-    error ? res.status(404).send(error) : res.status(200).send(result);
-  });
+  const data = await PokemonSchema.find(
+    { name: { $regex: search } },
+    (error, result) => {
+      error ? res.status(404).send(error) : res.status(200).send(result);
+    }
+  );
 });
 
 module.exports = router;
