@@ -174,13 +174,18 @@ mat-label.heading {
 }
 
 .view-more {
-  color: rgba(255, 255, 255, 0.8);
+  color: white;
   text-decoration: underline;
   text-decoration-style: dotted;
+  font-size: 1.1rem;
   cursor: pointer;
   float: right;
   margin: 60px;
+  padding: 5px;
+  background: transparent;
+  border: none;
   &:hover {
-    color: rgba(78, 161, 199, 0.795);
+    background-color: rgba(153, 147, 147, 0.411);
+    border-radius: 5px;
   }
 }

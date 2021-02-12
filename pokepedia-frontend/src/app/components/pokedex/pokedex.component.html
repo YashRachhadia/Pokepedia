@@ -58,7 +58,7 @@
       let item of searchedPokemons
         | abilitiesFilter: selectedAbilities
         | typesFilter: selectedType;
-      trackByFn
+      trackBy: trackByFn
     "
   >
     <app-detail-card
@@ -78,7 +78,7 @@
       let item of pokemons
         | abilitiesFilter: selectedAbilities
         | typesFilter: selectedType;
-      trackByFn
+      trackBy: trackByFn
     "
   >
     <app-detail-card
@@ -91,7 +91,7 @@
     ></app-detail-card>
   </div>
 </div>
-<p
+<button
   *ngIf="
     fetch && !searchedPokemons.length && !selectedAbilities && !selectedType
   "
@@ -99,4 +99,4 @@
   (click)="fetchMorePokemons()"
 >
   + View More
-</p>
+</button>
