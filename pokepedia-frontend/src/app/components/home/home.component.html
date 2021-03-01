@@ -7,13 +7,13 @@
       </div>
       <h3>Loading Pokemon Cards...</h3>
     </div>
-    <p class="title">Pokemon's</p>
-    <p class="view-btn">
-      View All
-      <span routerLink="/pokedex"
-        ><i class="fas fa-arrow-circle-right"></i
-      ></span>
-    </p>
+    <div class="headings">
+      <p class="title">Pokemon's</p>
+      <p class="view-btn">
+        View All
+        <a routerLink="/pokedex"><i class="fas fa-arrow-circle-right"></i></a>
+      </p>
+    </div>
     <div class="poke-cards" *ngIf="dataLoaded">
       <app-card
         *ngFor="let item of pokemons; trackBy: trackByFn"
@@ -23,13 +23,15 @@
     </div>
   </div>
   <div class="games-cards-container">
-    <p class="title">Video Games & Apps</p>
-    <p class="view-btn">
-      View All
-      <span routerLink="/games-and-apps"
-        ><i class="fas fa-arrow-circle-right"></i
-      ></span>
-    </p>
+    <div class="headings">
+      <p class="title">Video Games & Apps</p>
+      <p class="view-btn">
+        View All
+        <span routerLink="/games-and-apps"
+          ><i class="fas fa-arrow-circle-right"></i
+        ></span>
+      </p>
+    </div>
     <div class="game-cards">
       <app-card
         *ngFor="let item of games"
@@ -39,13 +41,15 @@
     </div>
   </div>
   <div class="events-cards-container">
-    <p class="title">Poke Events</p>
-    <p class="view-btn">
-      View All
-      <span routerLink="/poke-events"
-        ><i class="fas fa-arrow-circle-right"></i
-      ></span>
-    </p>
+    <div class="headings">
+      <p class="title">Poke Events</p>
+      <p class="view-btn">
+        View All
+        <span routerLink="/poke-events"
+          ><i class="fas fa-arrow-circle-right"></i
+        ></span>
+      </p>
+    </div>
     <div class="event-cards">
       <app-card
         *ngFor="let item of events"

@@ -61,20 +61,22 @@ $card_margin: 3rem;
   }
 }
 
-.title {
-  @include heading-texts();
-  float: left;
-  margin-left: 25px;
-}
+.headings {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
-.view-btn {
-  @include heading-texts();
-  float: right;
-  margin-right: 25px;
-  span {
-    .fas {
-      font-size: 25px;
-      cursor: pointer;
+  .title {
+    @include heading-texts();
+  }
+
+  .view-btn {
+    @include heading-texts();
+    a {
+      .fas {
+        font-size: 25px;
+        color: white;
+      }
     }
   }
 }
@@ -84,8 +86,15 @@ $card_margin: 3rem;
 .event-cards {
   width: 100%;
   height: auto;
-  margin-top: 1.5rem;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+}
+
+@media (max-width: 710px) {
+  .poke-cards,
+  .game-cards,
+  .event-cards {
+    justify-content: center;
+  }
 }
