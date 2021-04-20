@@ -20,6 +20,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { AbilitiesFilterPipe } from './pipes/abilities-filter.pipe';
 import { TypesFilterPipe } from './pipes/types-filter.pipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { TypesFilterPipe } from './pipes/types-filter.pipe';
     BrowserAnimationsModule,
     MatSelectModule,
     FormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [UtilityService],
   bootstrap: [AppComponent],
